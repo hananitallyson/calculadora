@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <div class="container-calculator">
+            <h1>calculadora</h1>
+            <div class="container-result">
+                <p id="calculator-result"></p>
+            </div>
+            <table>
+                <tr>
+                    <td><button class="calculator-button" onclick="clean()">C</button></td>
+                    <td><button class="calculator-button" onclick="del()">&lt;</button></td>
+                    <td><button class="calculator-button" onclick="insert('/')">/</button></td>
+                    <td><button class="calculator-button" onclick="insert('*')">x</button></td>
+                </tr>
+                <tr>
+                    <td><button class="calculator-button" onclick="insert('7')">7</button></td>
+                    <td><button class="calculator-button" onclick="insert('7')">8</button></td>
+                    <td><button class="calculator-button" onclick="insert('9')">9</button></td>
+                    <td><button class="calculator-button" onclick="insert('+')">+</button></td>
+                </tr>
+                <tr>
+                    <td><button class="calculator-button" onclick="insert('4')">4</button></td>
+                    <td><button class="calculator-button" onclick="insert('5')">5</button></td>
+                    <td><button class="calculator-button" onclick="insert('6')">6</button></td>
+                    <td><button class="calculator-button" onclick="insert('-')">-</button></td>
+                </tr>
+                <tr>
+                    <td><button class="calculator-button" onclick="insert('1')">1</button></td>
+                    <td><button class="calculator-button" onclick="insert('2')">2</button></td>
+                    <td><button class="calculator-button" onclick="insert('3')">3</button></td>
+                    <td rowspan="2"><button class="calculator-button doublesize-height" onclick="calculate()">=</button></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button class="calculator-button doublesize-width" onclick="insert('0')">0</button></td>
+                    <td><button class="calculator-button" onclick="insert('.')">.</button></td>
+                </tr>
+            </table>
+        </div>
+    </main>
+    <script>
+        function insert(n) {
+            var num = document.getElementById('calculator-result').innerHTML;
+            document.getElementById('calculator-result').innerHTML = num + n;
+        }
+
+        function clean() {
+            document.getElementById('calculator-result').innerHTML = "";
+        }
+
+        function del() {
+            var result = document.getElementById('calculator-result').innerHTML;
+            document.getElementById('calculator-result').innerHTML = result.substring(0, result.length - 1)
+        }
+
+        function calculate() {
+            var result = document.getElementById('calculator-result').innerHTML;
+            if (result) {
+                document.getElementById('calculator-result').innerHTML = eval(result);
+            }
+        }
+    </script>
+</body>
+</html>
